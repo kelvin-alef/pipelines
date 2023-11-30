@@ -14,5 +14,12 @@ pipeline {
                 }
             }
         }
+        stage('Build the application') {
+            steps {
+                nodejs(nodeJSInstallationName: 'Node 16.x') {
+                    sh 'npm run build'
+                }
+            }
+        }
     }
 }
