@@ -2,7 +2,7 @@ pipeline {
     agent any
   
     stages {
-        stage('checkout') {
+        stage('Checkout repository') {
             steps {
                 git url: 'https://github.com/kelvin-alef/react-app.git', branch: 'main'
             }
