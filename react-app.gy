@@ -7,5 +7,12 @@ pipeline {
                 git url: 'https://github.com/kelvin-alef/react-app.git', branch: 'main'
             }
         }
+        stage('Install dependencies') {
+            steps {
+                nodejs(nodeJSInstallationName: 'Node 16.x') {
+                    sh 'npm install'
+                }
+            }
+        }
     }
 }
