@@ -23,9 +23,12 @@ pipeline {
                 }
             }
         }
-        stage('Docker') {
+        stage('Build and push') {
             steps {
-                sh "docker version"
+                withDockerRegistry(credentialsId: 'dockerhub') {
+                    sh "docker build . -t kevinalef/react-app:latest"
+                    sh "docker push kevinalef/react-app:latest"
+                }
             }
         }
     }
