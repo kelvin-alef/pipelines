@@ -16,6 +16,13 @@ pipeline {
                 }
             }
         }
+        stage('Run the tests') {
+            steps {
+                nodejs(nodeJSInstallationName: 'Node 16.x') {
+                    sh 'npm run test -- --coverage'
+                }
+            }
+        }
         stage('Build the application') {
             steps {
                 nodejs(nodeJSInstallationName: 'Node 16.x') {
