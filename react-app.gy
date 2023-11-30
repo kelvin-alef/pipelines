@@ -25,10 +25,9 @@ pipeline {
         }
         stage('Build and push') {
             steps {
-                withDockerRegistry(credentialsId: 'dockerhub') {
-                    sh "docker build . -t kevinalef/react-app:latest"
-                    sh "docker push kevinalef/react-app:latest"
-                }
+                sh "docker login -u kevinalef -p dckr_pat_eX3cK93jO-WwomtyvLRoHhkyoPw"
+                sh "docker build . -t kevinalef/react-app:latest"
+                sh "docker push kevinalef/react-app:latest"
             }
         }
     }
