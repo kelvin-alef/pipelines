@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        'org.jenkinsci.plugins.docker.commons.tools.DockerTool' 'docker'
+    }
   
     stages {
         stage('Checkout repository') {
@@ -19,6 +22,11 @@ pipeline {
                 nodejs(nodeJSInstallationName: 'Node 16.x') {
                     sh 'npm run build'
                 }
+            }
+        }
+        stage('Docker') {
+            steps {
+                sh "docker version"
             }
         }
     }
