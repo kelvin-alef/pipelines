@@ -27,7 +27,7 @@ pipeline {
         stage('SonarCloud Scan') {
             steps {
                 withSonarQubeEnv('sonarcloud') {
-                    sh 'mvn clean package sonar:sonar'
+                    sh 'mvn verify sonar:sonar'
                 }
             }
         }
