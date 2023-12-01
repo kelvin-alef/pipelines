@@ -23,6 +23,13 @@ pipeline {
                 }
             }
         }
+        stage('SonarCloud Scan') {
+            steps {
+                withSonarQubeEnv('sonarcloud') {
+                    sh 'mvn clean package sonar:sonar'
+                }
+            }
+        }
         stage('Build the application') {
             steps {
                 nodejs(nodeJSInstallationName: 'Node 16.x') {
